@@ -123,7 +123,7 @@ io.on('connection', (socket) => {
 });
 
 mongoose.connect(
-    'process.env.DB_CONNECTION',
+    process.env.DB_CONNECTION,
     { useNewUrlParser: true, useUnifiedTopology: true },
     () => {
         console.log('connected');
