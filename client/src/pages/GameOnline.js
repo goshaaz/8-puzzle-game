@@ -75,14 +75,16 @@ export default function GameOnline() {
         setSolveVisibility('flex');
 
         var connectionOptions = {
-            'force new connection': true,
-            reconnectionAttempts: 'Infinity',
+            reconnectionAttempts: 2,
             timeout: 10000,
             transports: ['websocket'],
             query: { onlineId: location.state.params },
         };
 
-        socket = io.connect('http://localhost:9000', connectionOptions);
+        socket = io.connect(
+            'https://eightpuzzlegame.onrender.com',
+            connectionOptions
+        );
 
         socket.on('your turn', () => {
             setTurn(true);
@@ -175,7 +177,7 @@ export default function GameOnline() {
             pos[7][1] == 1 &&
             gameStarted
         ) {
-            axios.post('/api/post', {
+            axios.post('https://eightpuzzlegame.onrender.com/api/post', {
                 userId: firebase.auth().currentUser.email,
                 number_of_moves: moves - 1,
                 difficulty: chosenDifficulty,
@@ -452,13 +454,16 @@ export default function GameOnline() {
                     setTimeout(function () {
                         alert('SOLVED');
                     }, 250);
-                    axios.post('/api/post', {
-                        userId: firebase.auth().currentUser.email,
-                        number_of_moves: moves - 1,
-                        difficulty: chosenDifficulty,
-                        lowest_possible: minMoves,
-                        teammate: teammate,
-                    });
+                    axios.post(
+                        'https://eightpuzzlegame.onrender.com/api/post',
+                        {
+                            userId: firebase.auth().currentUser.email,
+                            number_of_moves: moves - 1,
+                            difficulty: chosenDifficulty,
+                            lowest_possible: minMoves,
+                            teammate: teammate,
+                        }
+                    );
                     setSolveVisibility('none');
                 }
             } else {

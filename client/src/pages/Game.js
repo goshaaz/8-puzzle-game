@@ -315,12 +315,15 @@ export default function Game(props) {
                         alert('SOLVED');
                         window.location.reload();
                     }, 250);
-                    axios.post('/api/post', {
-                        userId: firebase.auth().currentUser.email,
-                        number_of_moves: moves + 1,
-                        difficulty: chosenDifficulty,
-                        lowest_possible: minMoves,
-                    });
+                    axios.post(
+                        'https://eightpuzzlegame.onrender.com/api/post',
+                        {
+                            userId: firebase.auth().currentUser.email,
+                            number_of_moves: moves + 1,
+                            difficulty: chosenDifficulty,
+                            lowest_possible: minMoves,
+                        }
+                    );
                     setSolveVisibility('none');
                 }
             } else {
