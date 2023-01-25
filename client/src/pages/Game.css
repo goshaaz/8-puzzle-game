@@ -1,0 +1,33 @@
+.solvebutton{
+    width:60px;
+    font-size:15px;
+    left:50%;
+    top:610px; 
+    transform:translateX(-50px);
+    position:absolute; 
+    justify-content:center;
+    border:0px;
+    background-color:rgb(0,0,0,0.9);
+    color:#01d9ff;
+    padding:8px;
+    border-radius:10px;
+    font-weight:bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.solvebutton:hover{
+    background-color: #0e498b;
+    color:white;
+}
+
+.puzzlecontainer{
+    transform: translate(-195px,-200px) scale(1.3);
+}
+@media all and (max-width: 768px) {
+    .puzzlecontainer{
+        transform: translate(-150px,-200px) scale(1);
+    }
+    .solvebutton{
+        top:430px;
+    }
+  }

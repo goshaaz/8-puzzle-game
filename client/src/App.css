@@ -1,0 +1,18 @@
+.navbar{
+    position: absolute;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0px;
+    width:100%;
+    padding:20px;
+    padding-left: 30px;
+}
+
+@media all and (max-width: 768px) {
+    .footer{
+        padding:20px;
+        font-size: 14px;
+    }
+  }
